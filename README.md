@@ -1,2 +1,3 @@
-# Estudos-Cursos
-Projetos ao longo da carreira em diversos cursos.
+# Projetos-em-C
+
+Projeto que foram desenvolvidos ao longo do aprendizado da linguagem C
