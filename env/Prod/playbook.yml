@@ -1,0 +1,43 @@
+- name: Ansible
+  hosts: terraform-ansible
+  tasks:
+  - name: Criando o arquivo
+    copy:
+      dest: /home/ubuntu/index.html
+      content: <h1>Feito com Terraform e ansible v3</h1>
+
+  - name: Criando o servidor
+    shell: "nohup busybox httpd -f -p 8080 &"
+
+  - name: Instalando os pacotes
+    apt:
+      pkg:
+      - python3
+      - virtualenv
+      update_cache: true
+    become: yes
+
+  - name: Git Clone
+    ansible.builtin.git:
+      repo: https://github.com/guilhermeonrails/clientes-leo-api.git
+      dest: /home/ubuntu/dev/api
+      version: master
+      force: yes
+
+  - name: Instalando dependencias com pip
+    pip:
+      virtualenv: /home/ubuntu/dev/venv
+      requirements: /home/ubuntu/dev/api/requirements.txt
+
+  - name: Iniciando Projeto
+    shell: '. /home/ubuntu/dev/venv/bin/activate; django-admin startproject setup /home/ubuntu/dev/'
+
+  - name: Alterando hosts do settings
+    lineinfile: 
+      path: /home/ubuntu/dev/setup/settings.py
+      regexp: 'ALLOWED_HOSTS'
+      line: 'ALLOWED_HOSTS = ["*"]'
+      backrefs: yes
+
+  - name: Rodando o server
+    shell: 'cd /home/ubuntu/dev/; . venv/bin/activate; python manage.py runserver 0.0.0.0:8000 &'
