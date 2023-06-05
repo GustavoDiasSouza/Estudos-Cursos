@@ -1,0 +1,1 @@
+Coloque 1 número em cada campo e escolha uma opção.
