@@ -13,8 +13,8 @@ import java.util.List;
 public class Vertice {
 
     private Integer posicao;
+    private Marcador marcador = new Marcador();
     private List<Aresta> conexoes = new ArrayList<>();
-
 
 
 
