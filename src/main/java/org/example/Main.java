@@ -23,16 +23,29 @@ public class Main {
             System.out.println(vertice);
         }
 
-        System.out.println("\n\nEXECUTANDO DIJKSTRA");
-        System.out.println("Digite 2 pontos, um de saida e outro de chegada:");
-        Dijkstra dijkstra = new Dijkstra();
+        System.out.println("# Algoritimos #");
+        System.out.println("0 - Dijkstra");
+        System.out.println("1 - Kruskal");
+        System.out.println("2 - Prim");
+        System.out.print("Escolha:");
 
-        dijkstra.ligarDoisPontos(
-                entradaDeNumero(numeroDeVerticesEscolhido),
-                entradaDeNumero(numeroDeVerticesEscolhido),
-                lista
-        );
+        switch (entradaDeNumero(3)){
 
+            case 1:
+                System.out.println("\n\nEXECUTANDO DIJKSTRA");
+                System.out.println("Digite 2 pontos, um de saida e outro de chegada:");
+                Dijkstra dijkstra = new Dijkstra();
+                dijkstra.ligarDoisPontos(
+                        entradaDeNumero(numeroDeVerticesEscolhido),
+                        entradaDeNumero(numeroDeVerticesEscolhido),
+                        lista
+                );
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+        }
     }
 
 

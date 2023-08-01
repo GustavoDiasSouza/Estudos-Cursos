@@ -31,15 +31,16 @@ public class Dijkstra {
 
         System.out.println("------------");
 
+        StringBuilder stringBuilder = new StringBuilder();
         for(Vertice vertice : caminho){
-            System.out.print(vertice.getPosicao());
-            System.out.print("-->");
+            stringBuilder.append(vertice.getPosicao()).append(">--");
         }
+        stringBuilder.reverse();
+        System.out.println(stringBuilder);
 
     }
 
     private List<Vertice> encontrarMelhorRota(Vertice verticeDeChegada, Vertice verticeDeSaida, List<Vertice> caminho){
-        System.out.println("-"+verticeDeSaida);
         if (verticeDeSaida == verticeDeChegada || verticeDeChegada == null ){
             caminho.add(verticeDeSaida);
             return caminho;
