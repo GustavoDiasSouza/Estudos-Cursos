@@ -1,6 +1,6 @@
 package org.example;
 
-import org.example.build.Builder;
+import org.example.build.BuilderVertice;
 import org.example.dijkstra.Dijkstra;
 import org.example.model.Vertice;
 
@@ -14,10 +14,10 @@ public class Main {
 
 
     public static void main(String[] args) {
-        Builder builder = new Builder();
+        BuilderVertice builderVertice = new BuilderVertice();
         System.out.print("Digite o número de vertices, no máximo 20: ");
         int numeroDeVerticesEscolhido = entradaDeNumero(ENTRADA_DE_VERTICES_MAXIMA);
-        List<Vertice> lista = builder.buildVertices( numeroDeVerticesEscolhido ).getListaDeVerticesCriada();
+        List<Vertice> lista = builderVertice.buildVertices( numeroDeVerticesEscolhido ).getListaDeVerticesCriada();
 
         for(Vertice vertice : lista){
             System.out.println(vertice);
