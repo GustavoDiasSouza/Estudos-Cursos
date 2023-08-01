@@ -1,4 +1,4 @@
-package org.example.model;
+package org.example.build.model;
 
 import lombok.*;
 
@@ -14,7 +14,7 @@ public class Vertice {
 
     private Integer posicao;
     private Marcador marcador = new Marcador();
-    private List<Aresta> conexoes = new ArrayList<>();
+    private List<Aresta> arestas = new ArrayList<>();
 
 
 

@@ -1,8 +1,8 @@
 package org.example.dijkstra;
 
 
-import org.example.model.Aresta;
-import org.example.model.Vertice;
+import org.example.build.model.Aresta;
+import org.example.build.model.Vertice;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +53,7 @@ public class Dijkstra {
 
     private void avaliarRotas(Vertice verticeDeSaida){
 
-        for (Aresta aresta: verticeDeSaida.getConexoes()){
+        for (Aresta aresta: verticeDeSaida.getArestas()){
 
             if ( verificarSeJaPassou(verticeDeSaida, aresta.getDestino().getPosicao()) ){
 

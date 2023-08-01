@@ -1,8 +1,8 @@
 package org.example.build;
 
 import lombok.Getter;
-import org.example.model.Aresta;
-import org.example.model.Vertice;
+import org.example.build.model.Aresta;
+import org.example.build.model.Vertice;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +52,7 @@ public class BuilderVertice {
     }
 
     private boolean verificarSeJaTemEssaConexao(Vertice possivelConexao, Vertice vertice){
-        for ( Aresta arestasExistente : possivelConexao.getConexoes()){
+        for ( Aresta arestasExistente : possivelConexao.getArestas()){
             if ( arestasExistente.getDestino() ==  vertice ){
                 return true;
             }
@@ -66,7 +66,7 @@ public class BuilderVertice {
         int pesoDaAresta = entradaDeNumero(DISTANCIA_MAXIMA);
 
         Aresta aresta = new Aresta(primeiroVertice, pesoDaAresta );
-        segundoVertice.getConexoes().add(aresta);
+        segundoVertice.getArestas().add(aresta);
     }
 
 
