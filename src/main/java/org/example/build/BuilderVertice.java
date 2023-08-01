@@ -37,15 +37,17 @@ public class BuilderVertice {
         }
     }
 
+//              Condições extras
+//              && random.nextInt(2) != 0
 
     private void verificarSePodeTerUmaConexao(Vertice vertice){
-
+        System.out.println("1 - Sim | 2 - Não");
         for ( Vertice possivelConexao: listaDeVerticesCriada ){
-            if (possivelConexao.getPosicao() > vertice.getPosicao()
-//                    && random.nextInt(2) != 0
-                    && !verificarSeJaTemEssaConexao(possivelConexao, vertice)
-            ){
-                conectarVertices(possivelConexao, vertice);
+            if ( possivelConexao.getPosicao() > vertice.getPosicao() && !verificarSeJaTemEssaConexao(possivelConexao, vertice)){
+                System.out.print("Vertice "+vertice.getPosicao()+" esta conectado com "+possivelConexao.getPosicao()+"? ");
+                if (entradaDeNumero(2) == 1){
+                    conectarVertices(possivelConexao, vertice);
+                }
             }
 
         }
@@ -61,7 +63,7 @@ public class BuilderVertice {
     }
 
     private void conectarVertices(Vertice primeiroVertice, Vertice segundoVertice){
-        System.out.print("Peso para a aresta do "+segundoVertice.getPosicao()+" até "+primeiroVertice.getPosicao()+":");
+        System.out.print("Peso desta aresta: ");
 //        int pesoDaAresta = random.nextInt(DISTANCIA_MAXIMA)+1;
         int pesoDaAresta = entradaDeNumero(DISTANCIA_MAXIMA);
 

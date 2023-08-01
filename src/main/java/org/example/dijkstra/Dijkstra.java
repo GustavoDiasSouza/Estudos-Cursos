@@ -7,11 +7,13 @@ import org.example.build.model.Vertice;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.example.Main.listaDeVertice;
+
 public class Dijkstra {
 
 
 
-    public void ligarDoisPontos(final int localDeSaida, final int localDeChegada, List<Vertice> listaDeVertice){
+    public void ligarDoisPontos(final int localDeSaida, final int localDeChegada){
         List<Vertice> caminho = new ArrayList<>();
 
         Vertice verticeDeSaida = listaDeVertice.get(localDeSaida-1);
@@ -23,9 +25,10 @@ public class Dijkstra {
         System.out.println("Vertice de chegada: "+ verticeDeChegada.toString()+ "\n");
 
         avaliarRotas(verticeDeSaida);
+
         caminho = encontrarMelhorRota(verticeDeChegada, verticeDeSaida, caminho);
 
-        for(Vertice vertice : listaDeVertice){
+        for ( Vertice vertice : listaDeVertice ){
             System.out.println(vertice);
         }
 
@@ -40,18 +43,8 @@ public class Dijkstra {
 
     }
 
-    private List<Vertice> encontrarMelhorRota(Vertice verticeDeChegada, Vertice verticeDeSaida, List<Vertice> caminho){
-        if (verticeDeSaida == verticeDeChegada || verticeDeChegada == null ){
-            caminho.add(verticeDeSaida);
-            return caminho;
-        }
-
-        caminho.add(verticeDeChegada);
-
-        return encontrarMelhorRota(verticeDeChegada.getMarcador().getMelhorVertice(), verticeDeSaida, caminho);
-    }
-
     private void avaliarRotas(Vertice verticeDeSaida){
+        int distancia;
 
         for (Aresta aresta: verticeDeSaida.getArestas()){
 
@@ -59,7 +52,7 @@ public class Dijkstra {
 
                 verticeDeSaida.getMarcador().passandoPor(aresta.getDestino().getPosicao());
 
-                int distancia = aresta.getPeso() + verticeDeSaida.getMarcador().getDistancia();
+                distancia = aresta.getPeso() + verticeDeSaida.getMarcador().getDistancia();
 
                 if (distancia < aresta.getDestino().getMarcador().getDistancia()){
                     aresta.getDestino().getMarcador().setMelhorVertice(verticeDeSaida);
@@ -69,6 +62,17 @@ public class Dijkstra {
                 avaliarRotas(aresta.getDestino());
             }
         }
+    }
+
+    private List<Vertice> encontrarMelhorRota(Vertice verticeDeChegada, Vertice verticeDeSaida, List<Vertice> caminho){
+
+        if (verticeDeSaida == verticeDeChegada || verticeDeChegada == null ){
+            caminho.add(verticeDeSaida);
+            return caminho;
+        }
+
+        caminho.add(verticeDeChegada);
+        return encontrarMelhorRota(verticeDeChegada.getMarcador().getMelhorVertice(), verticeDeSaida, caminho);
     }
 
 

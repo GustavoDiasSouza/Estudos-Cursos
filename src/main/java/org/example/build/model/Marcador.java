@@ -11,9 +11,11 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 public class Marcador {
+
+
     private Vertice melhorVertice;
-    private List<Integer> posicoesJaValidadas = new ArrayList<>();
     private Integer distancia;
+    private List<Integer> posicoesJaValidadas = new ArrayList<>();
 
 
     public void passandoPor(Integer vertice){

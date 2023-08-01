@@ -1,1 +1,7 @@
-/home/gustavo/developer/projects/Faculdade/AE2/src/main/java/com/example/ae2/Ae2Application.java
+/home/gustavo/developer/projects/Faculdade/src/main/java/org/example/build/model/Vertice.java
+/home/gustavo/developer/projects/Faculdade/src/main/java/org/example/build/model/Marcador.java
+/home/gustavo/developer/projects/Faculdade/src/main/java/org/example/build/model/Aresta.java
+/home/gustavo/developer/projects/Faculdade/src/main/java/org/example/Prim/Prim.java
+/home/gustavo/developer/projects/Faculdade/src/main/java/org/example/dijkstra/Dijkstra.java
+/home/gustavo/developer/projects/Faculdade/src/main/java/org/example/Main.java
+/home/gustavo/developer/projects/Faculdade/src/main/java/org/example/build/BuilderVertice.java

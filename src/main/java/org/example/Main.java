@@ -1,6 +1,6 @@
 package org.example;
 
-import org.example.Prim.Prim;
+import org.example.prim.Prim;
 import org.example.build.BuilderVertice;
 import org.example.dijkstra.Dijkstra;
 import org.example.build.model.Vertice;
@@ -12,45 +12,38 @@ public class Main {
 
     public static final Integer ENTRADA_DE_VERTICES_MAXIMA = 20;
     public static final Integer DISTANCIA_MAXIMA = 99;
-    public static List<Vertice> listaFinal;
+    public static List<Vertice> listaDeVertice;
 
 
     public static void main(String[] args) {
         BuilderVertice builderVertice = new BuilderVertice();
-        System.out.print("Digite o número de vertices, no máximo 20: ");
-        int numeroDeVerticesEscolhido = entradaDeNumero(ENTRADA_DE_VERTICES_MAXIMA);
-        listaFinal = builderVertice.buildVertices( numeroDeVerticesEscolhido ).getListaDeVerticesCriada();
+        int numeroDeVerticesEscolhido;
 
-        for(Vertice vertice : listaFinal){
+        mensageiro(1);
+        numeroDeVerticesEscolhido = entradaDeNumero(ENTRADA_DE_VERTICES_MAXIMA);
+        listaDeVertice = builderVertice.buildVertices( numeroDeVerticesEscolhido ).getListaDeVerticesCriada();
+
+        for(Vertice vertice : listaDeVertice){
             System.out.println(vertice);
         }
 
-        System.out.println("# Algoritimos #");
-        System.out.println("0 - Dijkstra");
-        System.out.println("1 - Kruskal");
-        System.out.println("2 - Prim");
-        System.out.print("Escolha:");
-
-        switch (entradaDeNumero(3)){
-
-            case 0:
-                System.out.println("\n\nExecutando Dijkstra");
-                System.out.println("Digite 2 pontos, um de saida e outro de chegada:");
+        mensageiro(2);
+        switch (entradaDeNumero(3)) {
+            case 1 -> {
+                mensageiro(3);
                 Dijkstra dijkstra = new Dijkstra();
                 dijkstra.ligarDoisPontos(
                         entradaDeNumero(numeroDeVerticesEscolhido),
-                        entradaDeNumero(numeroDeVerticesEscolhido),
-                        listaFinal
+                        entradaDeNumero(numeroDeVerticesEscolhido)
                 );
-                break;
-            case 1:
-                break;
-            case 2:
-                System.out.println("\n\nExecutando Prim");
-                System.out.print("Minimo desejado:");
+            }
+            case 2 -> {
+            }
+            case 3 -> {
+                mensageiro(4);
                 Prim prim = new Prim();
-                prim.arvoreGeradoraMinima(listaFinal.get(0), entradaDeNumero(numeroDeVerticesEscolhido));
-                break;
+                prim.arvoreGeradoraMinima(listaDeVertice.get(0), entradaDeNumero(numeroDeVerticesEscolhido));
+            }
         }
     }
 
@@ -73,8 +66,31 @@ public class Main {
                 System.out.print("Número inválido. Digite novamente:");
             }
 
-        } while (numero <= 0 || numero >= numeroMaximo );
+        } while (numero <= 0 || numero > numeroMaximo );
 
         return numero;
+    }
+
+
+    private static void mensageiro(int opcao){
+        switch (opcao) {
+            case 1 -> System.out.print("Digite o número de vertices, no máximo 20: ");
+            case 2 -> {
+                System.out.println("# Algoritimos #");
+                System.out.println("1 - Dijkstra");
+                System.out.println("2 - Kruskal");
+                System.out.println("3 - Prim");
+                System.out.print("Escolha:");
+            }
+            case 3 -> {
+                System.out.println("\n\nExecutando Dijkstra");
+                System.out.println("Digite 2 pontos, um de saida e outro de chegada:");
+            }
+            case 4 -> {
+                System.out.println("\n\nExecutando Prim");
+                System.out.print("Minimo desejado:");
+            }
+        }
+
     }
 }
