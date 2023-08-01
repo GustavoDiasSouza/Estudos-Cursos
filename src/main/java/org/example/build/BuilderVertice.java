@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Random;
 
 import static org.example.Main.DISTANCIA_MAXIMA;
+import static org.example.Main.entradaDeNumero;
 
 
 @Getter
@@ -40,8 +41,10 @@ public class BuilderVertice {
     private void verificarSePodeTerUmaConexao(Vertice vertice){
 
         for ( Vertice possivelConexao: listaDeVerticesCriada ){
-//            if (possivelConexao.getPosicao() > vertice.getPosicao() && random.nextInt(2) != 0){
-            if ( possivelConexao.getPosicao() > vertice.getPosicao() && !verificarSeJaTemEssaConexao(possivelConexao, vertice) ){
+            if (possivelConexao.getPosicao() > vertice.getPosicao()
+//                    && random.nextInt(2) != 0
+                    && !verificarSeJaTemEssaConexao(possivelConexao, vertice)
+            ){
                 conectarVertices(possivelConexao, vertice);
             }
 
@@ -58,7 +61,9 @@ public class BuilderVertice {
     }
 
     private void conectarVertices(Vertice primeiroVertice, Vertice segundoVertice){
-        int pesoDaAresta = random.nextInt(DISTANCIA_MAXIMA)+1;
+        System.out.print("Peso para a aresta do "+segundoVertice.getPosicao()+" até "+primeiroVertice.getPosicao()+":");
+//        int pesoDaAresta = random.nextInt(DISTANCIA_MAXIMA)+1;
+        int pesoDaAresta = entradaDeNumero(DISTANCIA_MAXIMA);
 
         Aresta aresta = new Aresta(primeiroVertice, pesoDaAresta );
         segundoVertice.getConexoes().add(aresta);

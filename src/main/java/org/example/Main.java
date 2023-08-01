@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Main {
 
     public static final Integer ENTRADA_DE_VERTICES_MAXIMA = 20;
-    public static final Integer DISTANCIA_MAXIMA = 29;
+    public static final Integer DISTANCIA_MAXIMA = 99;
 
 
     public static void main(String[] args) {
