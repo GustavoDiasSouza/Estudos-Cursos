@@ -27,8 +27,8 @@ public class Marcador {
         if(melhorVertice != null){
             stringBuilder.append(" melhorVertice=").append(melhorVertice.getPosicao());
             stringBuilder.append(", distancia=").append(distancia);
+            stringBuilder.append(", ").append(posicoesJaValidadas.toString());
         }
-        stringBuilder.append(", ").append(posicoesJaValidadas.toString());
         stringBuilder.append("}");
         return stringBuilder.toString();
     }

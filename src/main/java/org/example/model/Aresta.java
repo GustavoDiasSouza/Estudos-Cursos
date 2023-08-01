@@ -8,7 +8,6 @@ import lombok.*;
 public class Aresta {
 
     private Vertice destino;
-    private Vertice saida;
     private Integer peso;
 
 
